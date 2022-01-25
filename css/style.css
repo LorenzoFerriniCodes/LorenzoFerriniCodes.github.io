@@ -4,4 +4,6 @@ body{
 }
 .box{
 	width: 20%;
+	padding: 40px;
+	text-align: center;
 }
