@@ -13,7 +13,11 @@ body{
 	font-family: 'Century Gothic', sans-serif;
 }
 .box h1{
-	font-size: 150%;
+	font-size: 180%;
+	letter-spacing: 3px;
+}
+.box h5{
+	font-size: 120%;
 }
 .box-img{
 	max-width: 50%;
