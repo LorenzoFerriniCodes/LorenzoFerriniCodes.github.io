@@ -1,5 +1,5 @@
 function loadPublications(year) {
-    fetch(`https://github.com/LorenzoFerriniCodes/LorenzoFerriniCodes.github.io/tree/devel/pub/${year}.json`) // Adjust the path to your JSON files
+    fetch(`https://github.com/LorenzoFerriniCodes/LorenzoFerriniCodes.github.io/tree/main/pub/${year}.json`) // Adjust the path to your JSON files
         .then(response => response.json())
         .then(data => {
             const publicationsList = document.getElementById('publications');
