@@ -6,7 +6,8 @@
                 "author": "Ferrini L., Lemaignan S.",
                 "year": 2022,
                 "pub_link": "https://academia.skadge.org/publis/ferrini2022kinematically.pdf",
-                "code_repo": "https://github.com/ros4hri/hri_fullbody"
+                "code_repo": "https://github.com/ros4hri/hri_fullbody",
+                "bibtex": "ciao!"
             }
         ]
 }

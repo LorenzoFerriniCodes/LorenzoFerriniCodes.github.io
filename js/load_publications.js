@@ -1,5 +1,5 @@
 function loadPublications(year) {
-    fetch(`pub/${year}.json`) // Adjust the path to your JSON files
+    fetch(`https://github.com/LorenzoFerriniCodes/LorenzoFerriniCodes.github.io/tree/devel/pub/${year}.json`) // Adjust the path to your JSON files
         .then(response => response.json())
         .then(data => {
             const publicationsList = document.getElementById('publications');
@@ -18,6 +18,10 @@ function loadPublications(year) {
                 if (publication.hasOwnProperty("code_repo")){
                     publicationHtml.innerHTML += `, [<a href=${publication.code_repo}>code</a>]`
                 }
+                if (publication.hasOwnProperty("bibtex")){
+                    publicationHtml.innerHTML += `, <button class="show-bibtex">Show BibTeX</button>`;
+                    publicationHtml.innerHTML +=  `<pre class="bibtex" style="display:none;">${publication.bibtex}</pre>`;
+                }
                 publicationsList.appendChild(publicationHtml);
             });
         })
@@ -26,7 +30,29 @@ function loadPublications(year) {
         });
 }
 
-for (let year = new Date().getFullYear(); year > 2021; year--){
+for (let year = new Date().getFullYear(); year > 2021;){
     loadPublications(year);
+    year--;
 }
+
+function toggleBibtex(button, bibtexElement) {
+    if (bibtexElement.style.display === 'none' || bibtexElement.style.display === '') {
+        bibtexElement.style.display = 'block';
+        button.textContent = 'Hide BibTeX';
+    } else {
+        bibtexElement.style.display = 'none';
+        button.textContent = 'Show BibTeX';
+    }
+}
+
+// Add event listeners to all "Show BibTeX" buttons
+showBibtexButtons = document.querySelectorAll('.show-bibtex');
+showBibtexButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        console.log('click')
+        const bibtexElement = button.nextElementSibling;
+        toggleBibtex(button, bibtexElement);
+    });
+});
+
 
