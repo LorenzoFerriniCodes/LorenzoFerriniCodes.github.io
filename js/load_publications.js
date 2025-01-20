@@ -1,9 +1,13 @@
 function loadPublications(year) {
-    fetch(`https://github.com/LorenzoFerriniCodes/LorenzoFerriniCodes.github.io/tree/main/pub/${year}.json`) // Adjust the path to your JSON files
+    fetch(`https://lorenzoferrinicodes.github.io/pub/${year}.json`) // Adjust the path to your JSON files
         .then(response => response.json())
         .then(data => {
             const publicationsList = document.getElementById('publications');
+            const publicationsDropdownList = document.getElementById('publications-dropdown-list');
             const publicationsYear = document.createElement('div');
+            
+            publicationsDropdownList.innerHTML += `<li><a href="#">${year}</a></li>`;
+            
             publicationsYear.className = 'publication-year';
             publicationsYear.innerHTML = `<h3>${year}</h3>`;
             publicationsList.appendChild(publicationsYear);
@@ -31,7 +35,8 @@ function loadPublications(year) {
 }
 
 for (let year = new Date().getFullYear(); year > 2021;){
-    loadPublications(year);
+    const currentYear = year;
+    loadPublications(currentYear);
     year--;
 }
 
