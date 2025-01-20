@@ -4,9 +4,16 @@
             {
                 "title": "Social Embeddings: Concept and Initial Investigation",
                 "author": "Lemaignan S., Andriella A., Ferrini L., Juricic L., Mohamed Y., Ros R.",
+                "medium": "[version 1; peer review: 2 approved with reservations]. Open Res Europe 2024",
                 "year": 2024,
-                "pub_link": "https://academia.skadge.org/publis/lemaignan2024social.pdf",
-                "bibtex": "Hello!"
+                "pub_link": "https://academia.skadge.org/publis/lemaignan2024social.pdf"
+            },
+            {
+                "title": "Probabilistic fusion of persons' body features: the Mr. Potato algorithm",
+                "author": "Lemaignan S., Ferrini L.",
+                "medium": "HRI 2024",
+                "year": 2024,
+                "pub_link": "https://academia.skadge.org/publis/lemaignan2024probabilistic.pdf"
             }
         ]
 }
