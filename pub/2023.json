@@ -7,6 +7,20 @@
                 "medium": "HRI 2023",
                 "year": 2023,
                 "pub_link": "https://academia.skadge.org/publis/lemaignan2023opensource.pdf"
+            },
+            {
+                "title": "Unifying Bottom-Up and Top-Down Attention Models for Social Robots",
+                "author": "Ferrini L., Ros R., Lemaignan S.",
+                "medium": "HRI 2023 -- Workshop Semantic Scene Understanding for Human-Robot Interaction",
+                "year": 2023,
+                "pub_link": "https://academia.skadge.org/publis/ferrini2023unifying.pdf"
+            },
+            {
+                "title": "ROS4HRI: Standardising an Interface for Human-Robot Interaction",
+                "author": "Ros R., Lemaignan S., Andriella A., Irisarri A.",
+                "medium": "HRI 2023 -- Workshop Advancing HRI Research and Benchmarking Through Open-Source Ecosystems",
+                "year": 2023,
+                "pub_link": "https://academia.skadge.org/publis/ros2023ros4hri.pdf"
             }
         ]
 }

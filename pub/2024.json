@@ -2,6 +2,13 @@
     "publications":
         [
             {
+                "title": "reMap: Spatially-grounded and Queryable Semantics for Interactive Robots",
+                "author": "Ferrini L., Palmieri J., Marino A., Lee D., Lemaignan S.",
+                "medium": "ICSR 2024",
+                "year": 2024,
+                "pub_link": "https://academia.skadge.org/publis/ferrini2024remap.pdf"
+            },
+            {
                 "title": "Social Embeddings: Concept and Initial Investigation",
                 "author": "Lemaignan S., Andriella A., Ferrini L., Juricic L., Mohamed Y., Ros R.",
                 "medium": "[version 1; peer review: 2 approved with reservations]. Open Res Europe 2024",

@@ -6,22 +6,38 @@ function loadPublications(year) {
             const publicationsDropdownList = document.getElementById('publications-dropdown-list');
             const publicationsYear = document.createElement('div');
             
-            publicationsDropdownList.innerHTML += `<li><a href="#">${year}</a></li>`;
+            publicationsDropdownList.innerHTML += `<li><a href="#${year}">${year}</a></li>`;
             
             publicationsYear.className = 'publication-year';
-            publicationsYear.innerHTML = `<h3>${year}</h3>`;
+            publicationsYear.innerHTML = `<h3 id="${year}" style="margin-top: 40px;">${year}</h3>`;
             publicationsList.appendChild(publicationsYear);
 
-            data.publications.forEach(publication => {
+            data.publications.forEach((publication, index, array) => {
                 const publicationHtml = document.createElement('div');
                 publicationHtml.className = 'publication';
-                publicationHtml.innerHTML = `<em>${publication.title}</em>, ${publication.author}, ${publication.medium}, ${publication.year}`;
-                if (publication.hasOwnProperty("pub_link")){
-                    publicationHtml.innerHTML += `, [<a href=${publication.pub_link}>pdf</a>]`
+
+                // Highlight your name in the authors
+                const highlightedAuthors = publication.author.replace(/Ferrini L\./g, '<u>Ferrini L.</u>');
+
+                // Generate publication HTML
+                publicationHtml.innerHTML = `
+                    <em>${publication.title}</em>, ${highlightedAuthors}, ${publication.medium}, ${publication.year}
+                `;
+
+                if (publication.hasOwnProperty("pub_link")) {
+                    publicationHtml.innerHTML += `, [<a href=${publication.pub_link}>pdf</a>]`;
                 }
-                if (publication.hasOwnProperty("code_repo")){
-                    publicationHtml.innerHTML += `, [<a href=${publication.code_repo}>code</a>]`
+                if (publication.hasOwnProperty("code_repo")) {
+                    publicationHtml.innerHTML += `, [<a href=${publication.code_repo}>code</a>]`;
                 }
+
+                // Add a lighter, shorter divider after each publication (except the last in the year)
+                if (index < array.length - 1) {
+                    publicationHtml.innerHTML += `
+                        <hr style="margin: 10px 0; border: 0.5px solid #ddd; width: 50%;">
+                    `;
+                }
+
                 publicationsList.appendChild(publicationHtml);
             });
         })
@@ -30,10 +46,8 @@ function loadPublications(year) {
         });
 }
 
-for (let year = new Date().getFullYear(); year > 2021;){
+for (let year = new Date().getFullYear(); year > 2021;) {
     const currentYear = year;
     loadPublications(currentYear);
     year--;
 }
-
-
