@@ -1,4 +1,12 @@
 {
     "publications":
-        []
+        [
+            {
+                "title": "VDB-based Spatially Grounded Semantics for Interactive Robots",
+                "author": "Ferrini L., Lemaignan S.",
+                "medium": "HRI 2025",
+                "year": 2025,
+                "pub_link": "https://lorenzoferrinicodes.github.io/pub/2025/ferrini2025vdbbased.pdf"
+            }
+        ]
 }
