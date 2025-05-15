@@ -1,53 +1,53 @@
-function loadPublications(year) {
-    fetch(`https://lorenzoferrinicodes.github.io/pub/${year}.json`) // Adjust the path to your JSON files
-        .then(response => response.json())
-        .then(data => {
-            const publicationsList = document.getElementById('publications');
-            const publicationsDropdownList = document.getElementById('publications-dropdown-list');
-            const publicationsYear = document.createElement('div');
-            
-            publicationsDropdownList.innerHTML += `<li><a href="#${year}">${year}</a></li>`;
-            
-            publicationsYear.className = 'publication-year';
-            publicationsYear.innerHTML = `<h3 id="${year}" style="margin-top: 40px;">${year}</h3>`;
-            publicationsList.appendChild(publicationsYear);
+document.addEventListener('DOMContentLoaded', () => {
+    async function loadAllPublications(startYear, endYear) {
+        const publicationsList = document.getElementById('publications');
+        const publicationsDropdownList = document.getElementById('publications-dropdown-list');
 
-            data.publications.forEach((publication, index, array) => {
-                const publicationHtml = document.createElement('div');
-                publicationHtml.className = 'publication';
+        for (let year = startYear; year >= endYear; year--) {
+            try {
+                const response = await fetch(`https://lorenzoferrinicodes.github.io/pub/${year}.json`);
+                const data = await response.json();
 
-                // Highlight your name in the authors
-                const highlightedAuthors = publication.author.replace(/Ferrini L\./g, '<u>Ferrini L.</u>');
+                publicationsDropdownList.innerHTML += `<li><a href="#${year}">${year}</a></li>`;
 
-                // Generate publication HTML
-                publicationHtml.innerHTML = `
-                    <em>${publication.title}</em>, ${highlightedAuthors}, ${publication.medium}, ${publication.year}
-                `;
+                const publicationsYear = document.createElement('div');
+                publicationsYear.className = 'publication-year';
+                publicationsYear.innerHTML = `<h3 id="${year}" style="margin-top: 40px;">${year}</h3>`;
+                publicationsList.appendChild(publicationsYear);
 
-                if (publication.hasOwnProperty("pub_link")) {
-                    publicationHtml.innerHTML += `, [<a href=${publication.pub_link}>pdf</a>]`;
-                }
-                if (publication.hasOwnProperty("code_repo")) {
-                    publicationHtml.innerHTML += `, [<a href=${publication.code_repo}>code</a>]`;
-                }
+                data.publications.sort((a, b) => a.title.localeCompare(b.title));
 
-                // Add a lighter, shorter divider after each publication (except the last in the year)
-                if (index < array.length - 1) {
-                    publicationHtml.innerHTML += `
-                        <hr style="margin: 10px 0; border: 0.5px solid #ddd; width: 50%;">
+                data.publications.forEach((publication, index, array) => {
+                    const publicationHtml = document.createElement('div');
+                    publicationHtml.className = 'publication';
+
+                    const highlightedAuthors = publication.author.replace(/Ferrini L\./g, '<u>Ferrini L.</u>');
+
+                    publicationHtml.innerHTML = `
+                        <em>${publication.title}</em>, ${highlightedAuthors}, ${publication.medium}, ${publication.year}
                     `;
-                }
 
-                publicationsList.appendChild(publicationHtml);
-            });
-        })
-        .catch(error => {
-            console.error(`Error loading publications: ${error}`);
-        });
-}
+                    if (publication.pub_link) {
+                        publicationHtml.innerHTML += `, [<a href=${publication.pub_link}>pdf</a>]`;
+                    }
+                    if (publication.code_repo) {
+                        publicationHtml.innerHTML += `, [<a href=${publication.code_repo}>code</a>]`;
+                    }
 
-for (let year = new Date().getFullYear(); year > 2021;) {
-    const currentYear = year;
-    loadPublications(currentYear);
-    year--;
-}
+                    if (index < array.length - 1) {
+                        publicationHtml.innerHTML += `
+                            <hr style="margin: 10px 0; border: 0.5px solid #ddd; width: 50%;">
+                        `;
+                    }
+
+                    publicationsList.appendChild(publicationHtml);
+                });
+
+            } catch (error) {
+                console.error(`Error loading publications for ${year}: ${error}`);
+            }
+        }
+    }
+
+    loadAllPublications(new Date().getFullYear(), 2022);
+});
