@@ -7,6 +7,20 @@
                 "medium": "HRI 2025",
                 "year": 2025,
                 "pub_link": "https://lorenzoferrinicodes.github.io/pub/2025/ferrini2025vdbbased.pdf"
+            },
+            {
+                "title": "Demonstration of an Open-Source ROS 2 Framework and Simulator for Situated Interactive Social Robots",
+                "author": "Cooper S., Ros R., Lemaignan S., Gebellí F., Ferrini L., Juričić L.",
+                "medium": "HRI 2025",
+                "year": 2025,
+                "pub_link": "https://ieeexplore.ieee.org/abstract/document/10974109"
+            },
+            {
+                "title": "From Percepts to Semantics: A Multi-modal Saliency Map to Support Social Robots’ Attention",
+                "author": "Ferrini L., Andriella A., Ros R., Lemaignan S.",
+                "medium": "ACM Transactions on Human-Robot Interaction",
+                "year": 2025,
+                "pub_link": "https://dl.acm.org/doi/10.1145/3737891"
             }
         ]
 }
